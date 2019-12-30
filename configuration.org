@@ -86,6 +86,7 @@ p
 * C coding style
 
 Use the Linux kernel style guidelines, taken from [[https://www.kernel.org/doc/html/v4.10/process/coding-style.html][here]].
+The idea to fix Backspace-ing over tabs was taken from [[https://www.reddit.com/r/emacs/comments/5nr9ui/how_do_i_get_emacs_to_use_tabs_real_tabs_as_in/][here]].
 
 #+BEGIN_SRC emacs-lisp
   (defun c-lineup-arglist-tabs-only (ignored)
