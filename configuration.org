@@ -71,3 +71,15 @@ Allow for easy access to agenda.
   (define-key global-map "\C-ca" 'org-agenda)
 #+END_SRC
 
+* Viewing PDF files
+
+Use the pdf viewer from the pdf-tools package. This requires the
+epdfinfo(1) program, which on Debian systems can be found in the
+elpa-pdf-tools-server package.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'pdf-view)
+  (provide 'init-pdfview)
+  (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
+#+END_SRC
+p
