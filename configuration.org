@@ -83,10 +83,12 @@ elpa-pdf-tools-server package.
   (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
 #+END_SRC
 p
-* C coding style
+* C/C++ coding style
 
-Use the Linux kernel style guidelines, taken from [[https://www.kernel.org/doc/html/v4.10/process/coding-style.html][here]].
-The idea to fix Backspace-ing over tabs was taken from [[https://www.reddit.com/r/emacs/comments/5nr9ui/how_do_i_get_emacs_to_use_tabs_real_tabs_as_in/][here]].
+For C I use the Linux kernel style guidelines, taken from [[https://www.kernel.org/doc/html/v4.10/process/coding-style.html][here]].  The
+idea to fix Backspace-ing over tabs was taken from [[https://www.reddit.com/r/emacs/comments/5nr9ui/how_do_i_get_emacs_to_use_tabs_real_tabs_as_in/][here]].  For C++ I
+use Stroustup style, with tabs but 4-space wide ones (yes
+really).
 
 #+BEGIN_SRC emacs-lisp
   (defun c-lineup-arglist-tabs-only (ignored)
@@ -98,7 +100,7 @@ The idea to fix Backspace-ing over tabs was taken from [[https://www.reddit.com/
       (* (max steps 1)
          c-basic-offset)))
 
-  (add-hook 'c-mode-common-hook
+  (add-hook 'c-mode-hook
             (lambda ()
               ;; Add kernel style
               (c-add-style
@@ -116,4 +118,17 @@ The idea to fix Backspace-ing over tabs was taken from [[https://www.reddit.com/
 	      ;; instead of turning the tab into spaces.
 	      (setq backward-delete-char-untabify-method 'hungry)
               (c-set-style "linux-tabs-only")))
+
+  (defconst my-cc-style
+   '("linux")) ; inherits from the linux style
+
+   (add-hook 'c++-mode-hook
+            (lambda ()
+	      (c-set-style "stroustrup")
+              (setq indent-tabs-mode t)
+              (setq show-trailing-whitespace t)
+	      (setq tab-width 4)
+	      ;; Makes pressing Backspace delete an entire tab
+	      ;; instead of turning the tab into spaces.
+	      (setq backward-delete-char-untabify-method 'hungry)))
 #+END_SRC
