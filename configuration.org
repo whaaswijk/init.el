@@ -91,6 +91,10 @@ use Stroustup style, with tabs but 4-space wide ones (yes
 really).
 
 #+BEGIN_SRC emacs-lisp
+
+  ;; Set a column at 80 chars
+  (setq fci-rule-column 80)
+
   (defun c-lineup-arglist-tabs-only (ignored)
     "Line up argument lists by tabs, not spaces"
     (let* ((anchor (c-langelem-pos c-syntactic-element))
@@ -104,7 +108,7 @@ really).
             (lambda ()
               ;; Add kernel style
               (c-add-style
-               "linux-tabs-only"
+               "linux"
                '("linux-tabs-only" (c-offsets-alist
                           (arglist-cont-nonempty
                            c-lineup-gcc-asm-reg
@@ -112,21 +116,23 @@ really).
 
   (add-hook 'c-mode-hook
             (lambda ()
+	      (setq c-basic-offset 8)
+	      (setq tab-width 8)
               (setq indent-tabs-mode t)
               (setq show-trailing-whitespace t)
 	      ;; Makes pressing Backspace delete an entire tab
 	      ;; instead of turning the tab into spaces.
 	      (setq backward-delete-char-untabify-method 'hungry)
-              (c-set-style "linux-tabs-only")))
+              (c-set-style "linux")))
 
-   (add-hook 'c++-mode-hook
-           (lambda ()
-	      (c-set-style "stroustrup")
-	      (fci-mode)
+  (add-hook 'c++-mode-hook
+            (lambda ()
+              (c-set-style "stroustrup")
+              (fci-mode)
               (setq indent-tabs-mode t)
               (setq show-trailing-whitespace t)
               (setq tab-width 4)
-	      ;; Makes pressing Backspace delete an entire tab
-	      ;; instead of turning the tab into spaces.
-	      (setq backward-delete-char-untabify-method 'hungry)))
+              ;; Makes pressing Backspace delete an entire tab
+              ;; instead of turning the tab into spaces.
+              (setq backward-delete-char-untabify-method 'hungry)))
 #+END_SRC
