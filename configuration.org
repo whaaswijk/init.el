@@ -136,3 +136,9 @@ really).
               ;; instead of turning the tab into spaces.
               (setq backward-delete-char-untabify-method 'hungry)))
 #+END_SRC
+* Magit
+
+Bind the Magit status command:
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x g") 'magit-status)
+#+END_SRC

@@ -13,7 +13,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (fill-column-indicator git-auto-commit-mode org-bullets tabbar session pod-mode muttrc-mode mutt-alias markdown-mode initsplit htmlize graphviz-dot-mode folding eproject diminish csv-mode browse-kill-ring boxquote bm bar-cursor apache-mode)))
+    (with-editor magit fill-column-indicator git-auto-commit-mode org-bullets tabbar session pod-mode muttrc-mode mutt-alias markdown-mode initsplit htmlize graphviz-dot-mode folding eproject diminish csv-mode browse-kill-ring boxquote bm bar-cursor apache-mode)))
  '(safe-local-variable-values (quote ((eval setq gac-automatically-push-p 1))))
  '(tool-bar-mode nil))
 (custom-set-faces
